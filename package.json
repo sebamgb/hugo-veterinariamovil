@@ -1,0 +1,24 @@
+{
+  "name": "course-seo-intro",
+  "version": "1.0.0",
+  "description": "Online course - seo and hugo implementation",
+  "main": "index.js",
+  "scripts": {
+    "dev": "hugo server --disableFastRender --gc",
+    "dev:preview": "hugo server --disableFastRender --gc --buildDrafts --buildFuture",
+    "build": "hugo --gc --minify --cleanDestinationDir",
+    "renderToDisk:dev": "hugo server --disableFastRender --renderToDisk --cleanDestinationDir",
+    "renderToDisk:preview": "hugo server --renderToDisk --cleanDestinationDir --disableFastRender --buildDrafts --buildFuture ",
+    "renderToDisk:production": "hugo server --renderToDisk --cleanDestinationDir --disableFastRender --gc --minify --environment production",
+  
+    "npm-check": "npx npm-check -u",
+
+ 
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/future-wd/course-hugo-seo"
+  },
+  "author": "Sean Emerson",
+  "license": "ISC"
+}

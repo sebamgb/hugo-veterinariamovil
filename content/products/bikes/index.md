@@ -2,6 +2,7 @@
 title: "Bikes"
 date: 2021-11-23T21:43:02+11:00
 draft: false
+images: [bikes.jpg]
 summary: Bikes - Doloribus facere architecto voluptatem incidunt officiis libero laborum amet provident maiores? Voluptates optio, reprehenderit nesciunt eos, cupiditate consequuntur sapiente explicabo laudantium voluptate ea quae sit tempora, praesentium repellat pariatur perferendis quibusdam.
 ---
 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam et incidunt numquam! Adipisci sunt ab quod asperiores consectetur. Saepe natus iusto, rerum modi vel architecto iure tenetur possimus facilis suscipit.

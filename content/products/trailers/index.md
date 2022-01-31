@@ -2,6 +2,9 @@
 title: "Trailers"
 date: 2021-11-23T21:43:02+11:00
 draft: false
+images: [trailers.jpg]
+price: 99.99
+model: 9382
 ---
 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam et incidunt numquam! Adipisci sunt ab quod asperiores consectetur. Saepe natus iusto, rerum modi vel architecto iure tenetur possimus facilis suscipit.
 
