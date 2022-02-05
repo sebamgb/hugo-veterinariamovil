@@ -11,7 +11,7 @@
     "renderToDisk:preview": "hugo server --renderToDisk --cleanDestinationDir --disableFastRender --buildDrafts --buildFuture ",
     "renderToDisk:production": "hugo server --renderToDisk --cleanDestinationDir --disableFastRender --gc --minify --environment production",
   
-    "npm-check": "npx npm-check -u",
+    "npm-check": "npx npm-check -u"
 
  
   },
