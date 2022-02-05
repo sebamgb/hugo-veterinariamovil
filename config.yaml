@@ -3,7 +3,13 @@ baseURL: http://localhost/
 disableKinds:
 - taxonomy
 - taxonomyTerm
-languageCode: en-au
+# for xml output
+languageCode: "en-au"
+# for website
+defaultContentLanguage: "en-au"
+languages:
+  en-au:
+    weight: 1
 title: Seo Inc.
 # alternate copyright company text
 copyright: Web Design Inc.
