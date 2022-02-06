@@ -4,16 +4,21 @@
   "description": "Online course - seo and hugo implementation",
   "main": "index.js",
   "scripts": {
-    "dev": "hugo server --disableFastRender --gc",
-    "dev:preview": "hugo server --disableFastRender --gc --buildDrafts --buildFuture",
-    "build": "hugo --gc --minify --cleanDestinationDir",
-    "renderToDisk:dev": "hugo server --disableFastRender --renderToDisk --cleanDestinationDir",
-    "renderToDisk:preview": "hugo server --renderToDisk --cleanDestinationDir --disableFastRender --buildDrafts --buildFuture ",
-    "renderToDisk:production": "hugo server --renderToDisk --cleanDestinationDir --disableFastRender --gc --minify --environment production",
-  
-    "npm-check": "npx npm-check -u"
-
- 
+    "dev": "exec-bin node_modules/.bin/hugo/hugo server --disableFastRender --gc",
+    "dev:preview": "exec-bin node_modules/.bin/hugo/hugo server --disableFastRender --gc --buildDrafts --buildFuture",
+    "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify --cleanDestinationDir",
+    "renderToDisk:dev": "exec-bin node_modules/.bin/hugo/hugo server --disableFastRender --renderToDisk --cleanDestinationDir",
+    "renderToDisk:preview": "exec-bin node_modules/.bin/hugo/hugo server --renderToDisk --cleanDestinationDir --disableFastRender --buildDrafts --buildFuture ",
+    "renderToDisk:production": "exec-bin node_modules/.bin/hugo/hugo server --renderToDisk --cleanDestinationDir --disableFastRender --gc --minify --environment production",
+    "npm-check": "npx npm-check -u",
+    "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo"
+  },
+  "dependencies": {
+    "exec-bin": "^1.0.0",
+    "hugo-installer": "^3.1"
+  },
+  "otherDependencies": {
+    "hugo": "0.92.1"
   },
   "repository": {
     "type": "git",
