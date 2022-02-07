@@ -20,9 +20,13 @@
           {{ with .Params.price }}
           Price: {{ . }}
           {{ end }}
-          {{ with .Params.model }}
+          {{ with .Params.brand }}
           <br>
-          Model: {{ . }}  
+          Brand: {{ . }}  
+          {{ end }}
+          {{ with .Params.mpn }}
+          <br>
+          Model Number: {{ . }}  
           {{ end }}
         </div>
       </div>
