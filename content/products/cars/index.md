@@ -3,6 +3,7 @@ title: "Cars"
 date: 2021-11-23T21:43:02+11:00
 draft: false
 images: [cars.jpg]
+categories: [powered]
 ---
 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam et incidunt numquam! Adipisci sunt ab quod asperiores consectetur. Saepe natus iusto, rerum modi vel architecto iure tenetur possimus facilis suscipit.
 
