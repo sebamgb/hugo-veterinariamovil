@@ -1,0 +1,10 @@
+{{- /* parse CSS into libsass compiler */ -}}
+{{- with $src := resources.Get . -}}
+  {{- /* postcss is run in all environments. Plugins can be run conditionally based on the ENV */ -}}
+  {{ $opts := (dict "transpiler" "libsass" "outputStyle" "compressed" "includePaths" (slice "node_modules")) -}}
+  {{ if eq (hugo.Environment) "development" -}}
+    {{- $opts = (dict "transpiler" "libsass" "enableSourceMap" true "includePaths" (slice "node_modules")) -}}
+  {{ end -}}
+  {{- $src = $src | toCSS $opts | postCSS | resources.Fingerprint -}}
+  <link rel="stylesheet" href="{{ $src.Permalink | relURL }}" integrity="{{ $src.Data.Integrity }}" crossorigin="anonymous">
+{{- end -}}
