@@ -55,7 +55,7 @@ params:
 
     openingHours:
     - name: Opening Hours
-      # icon: icons/bootstrap/clock
+      # icon: icons/bootstrap/clock.svg
       icon: bi bi-clock
       hours:
       # date is ignored for display and schema
@@ -74,7 +74,7 @@ params:
     - name: Phone
       text: (02) 8004 3293
       url: "tel:+61280043293"
-      # icon: icons/bootstrap/phone
+      # icon: icons/bootstrap/phone.svg
       icon: bi bi-phone
       disable: false
     # mobile
@@ -86,7 +86,7 @@ params:
     - name: Email
       text: test@domain.com
       url: "mailto:test@domain.com"
-      # icon: icons/bootstrap/envelope
+      # icon: icons/bootstrap/envelope.svg
       icon: bi bi-envelope
       disable: false
       desc: Email Address
