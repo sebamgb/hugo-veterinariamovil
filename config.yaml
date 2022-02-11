@@ -42,7 +42,7 @@ params:
       # hasMap
       url: https://goo.gl/maps/2bHxJ3bfhtHtnx2b9
       geo: #coordinates 
-      #icon: icons/bootstrap/geo-alt
+      # icon: icons/bootstrap/geo-alt.svg
       icon: bi bi-geo-alt
       disable: false
     # postal address is just for contact details display
