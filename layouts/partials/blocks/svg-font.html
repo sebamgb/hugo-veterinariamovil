@@ -1,2 +1,25 @@
-{{- $src := resources.Get . -}}
-{{- $src.Content | safeHTML -}}
+{{- $fc := "" -}}
+{{- $em := "" -}}
+{{- $src := "" -}}
+{{- $suf := "" -}}
+{{- if reflect.IsMap . -}}
+{{- with .fontClass -}}
+{{- $fc = . -}}
+{{ end }}
+{{- if and .em .src -}}
+{{- $em = .em -}}
+{{- $suf = "em" -}}
+{{- $src = .src -}}
+{{- end -}}
+{{- end -}}
+{{- $em = printf `%v%s` $em $suf -}}
+{{- with resources.Get $src -}}
+{{- $name := replace .Name "/" "_" -}}
+{{- $name = replace $name "." "-" -}}
+{{- $attrs := dict "class" (printf "%s %s" $fc $name) -}}
+{{- printf "<%s>:root{--%v:%s;}.%s{height:var(--%s);width:var(--%s);}</%s>" "style" $name $em $name $name $name "style" | safeHTML -}}
+<span {{- range $k, $v :=$attrs -}} {{- with $v -}} {{- printf ` %s=%q` $k $v | safeHTMLAttr -}} {{- end -}} {{- end
+    -}}>
+    {{- .Content | safeHTML -}}
+</span>
+{{- end -}}

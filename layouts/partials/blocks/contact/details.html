@@ -31,8 +31,8 @@
     {{ if not .disable }}
       <div class="d-flex flex-row align-middle">
         <div class="d-flex align-items-center">
-          <div class="fs-4 text-primary me-2 my-2">
-            {{- partial "blocks/svg-font" .icon -}}
+          <div class="fs-0 text-primary me-2 my-2">
+            {{- partial "blocks/svg-font" (dict "src" .icon "em" 1) -}}
           </div>
         </div>
         <div class=" d-flex align-items-center">

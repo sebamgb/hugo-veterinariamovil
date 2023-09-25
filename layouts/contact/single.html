@@ -1,8 +1,11 @@
 {{ define "main" }}
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col">
+    <div class="col mb-4">
       <h1>{{- .Title -}}</h1>
+      <p>
+        {{- .Content | safeHTML -}}
+      </p>
     </div>
   </div>
   <div class="row pb-3">

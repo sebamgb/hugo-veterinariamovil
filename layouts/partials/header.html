@@ -1,2 +1,7 @@
-{{/*  {{ partial "blocks/menu-social" (dict "class" "me-2 mb-2 text-primary" "fontClass" "fs-3" "em" 1) }}  */}}
+<div class="container-fluid bg-success">
+    <div class="container d-flex justify-content-end">
+        {{- partial "blocks/menu-social" (dict "class" "me-2 text-white" "classTitle" "text-white text-decoration-none"
+        "fontClass" "fs-0" "em" .8) -}}
+    </div>
+</div>
 {{- partial "nav" (dict "menuID" "main" "page" .) -}}

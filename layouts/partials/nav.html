@@ -1,46 +1,56 @@
 {{- $page := .page }}
 {{- $menuID := .menuID }}
-<nav class="navbar bg-body-tertiary" aria-label="Main navigation">
-    <div class="container-fluid brand d-flex justify-content-center">
+<nav class="navbar bg-body" aria-label="Main navigation">
+    <div class="container-fluid brand d-flex flex-column">
         {{- partial "inline/navbar-brand/brand.html" (dict "page" $page) -}}
     </div>
-    <div class="container-fluid">
-        <div class="nav-item dropdown me-md-5">
-            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
-                aria-label="Toggle theme (auto)">
-                <svg class="fc my-1 theme-icon-active">
-                    <use href="#circle-half"></use>
-                </svg>
-                <span class="ms-2" id="bd-theme-text">{{- i18n "toggle-theme" -}}</span>
-            </button>
-            {{- partial "inline/navbar-item/menu/dropdown-ul.html" (dict "page" $page) -}}
-        </div>
-        <div class="ms-md-5 order-first">
-            <button class="navbar-toggler rounded-circle" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#navbarSupportedContent" aria-controls="staticBackdrop" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <small>
-                {{- i18n "toggler" -}}
-            </small>
-        </div>
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-            id="navbarSupportedContent" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">{{- $page.Site.Title -}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="container-fluid py-1">
+        <div class="container d-flex justify-content-between">
+            <div class="nav-item dropdown">
+                <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                    id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
+                    aria-label="Toggle theme (auto)">
+                    <svg class="fc my-1 theme-icon-active">
+                        <use href="#circle-half"></use>
+                    </svg>
+                    <span class="ms-3" id="bd-theme-text">{{- i18n "toggle-theme" -}}</span>
+                </button>
+                {{- partial "inline/navbar-item/menu/dropdown-ul.html" (dict "page" $page) -}}
             </div>
-            <div class="offcanvas-body">
-                {{- with index site.Menus $menuID -}}
-                <ul class="navbar-nav mb-2">
-                    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) -}}
-                </ul>
-                {{- end -}}
+            {{- partial "inline/navbar-item/menu/menu-toggler.html" (dict "wrapperClass" "order-first" "buttonClass"
+            "navbar-toggler rounded-circle" "text" (i18n "toggler")) -}}
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                id="navbarSupportedContent" aria-labelledby="offcanvasWithBothOptionsLabel">
+                {{- partial "inline/menu/offcanvas/header.html" (dict "class" "offcanvas-header" "titleClass"
+                "offcanvas-title" "title" site.Title "btnClass" "btn-close") -}}
+                <div class="offcanvas-body">
+                    {{- with index site.Menus $menuID -}}
+                    <ul class="navbar-nav mb-2">
+                        {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) -}}
+                    </ul>
+                    {{- end -}}
+                </div>
             </div>
         </div>
     </div>
 </nav>
+{{- define "partials/inline/menu/offcanvas/header.html" -}}
+<div class="{{ .class }}">
+    <h5 class="{{ .titleClass }}" id="offcanvasWithBothOptionsLabel">{{- .title -}}</h5>
+    <button type="button" class="{{ .btnClass }}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+{{- end -}}
+{{- define "partials/inline/navbar-item/menu/menu-toggler.html" -}}
+<div class="{{ .wrapperClass }}">
+    <button class="{{ .buttonClass }}" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarSupportedContent"
+        aria-controls="staticBackdrop" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <small>
+        {{- .text -}}
+    </small>
+</div>
+{{- end -}}
 {{- define "partials/inline/navbar-item/menu/dropdown-ul.html" -}}
 {{- $page := .page -}}
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
@@ -63,7 +73,7 @@
 {{- end -}}
 {{- define "partials/inline/navbar-brand/brand.html" -}}
 {{- $page := .page -}}
-<div class="d-flex flex-column">
+<div class="justify-self-center">
     <a title="{{ i18n `home` }}" href="{{- relLangURL `` -}}">
         {{- with $page.Site.Params.logo -}}
         {{- partial "images" (dict "src" . "alt" "clinica veterinaria movil" "width" 120 "height" 150) -}}
@@ -71,6 +81,9 @@
         <h1 class="h1">{{- $page.Site.Title -}}</h1>
         {{- end -}}
     </a>
+</div>
+<div class="justify-self-center">
+    <span>{{ site.Params.slogan }}</span>
 </div>
 {{- end -}}
 {{- define "partials/inline/menu/walk.html" -}}
