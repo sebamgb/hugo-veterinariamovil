@@ -1,0 +1,20 @@
+baseURL: http://localhost/
+# for xml output
+languageCode: "es-CL"
+# for website
+defaultContentLanguage: "es"
+title: Clínica Veterinaria Móvil
+# alternate copyright company text
+copyright: by Sebastián Romero
+# controls number of pages displayed on list pages
+paginate: 6
+# controls the summary length on list pages
+summaryLength: 7
+# this is required so that Hugo will render markdown to HTML
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+# taxonomy set up (tags have been disabled)
+taxonomies:
+  category: categories

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    {{- range .Site.Params.theme -}}
+    {{- with resources.GetMatch .src -}}
+        {{- .Content | safeHTML -}}
+    {{- end -}}
+    {{- end -}}
+</svg>

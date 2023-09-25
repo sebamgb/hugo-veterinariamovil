@@ -1,17 +1,20 @@
 ---
-title: "Home"
+title: "Inicio"
 date: 2021-11-16T23:04:08+11:00
 draft: false
 menu: main
 weight: 10
-heading: My first Bootstrap & Hugo Site
+heading: Clínica Veterinaria Móvil Viña del Mar
 btn1:
-  text: Bootstrap 5 Docs
-  url: https://getbootstrap.com/
+  text: Contáctanos
+  url: https://api.whatsapp.com/send
+  whatsapp:
+    number: 56982599243
+    text: Hola, buen día tarde o noche, quisiera saber más de su negocio.
 btn2:
-  text: Hugo Docs
-  url: https://gohugo.io/
-cardsTitle: Our Services
+  text: Info
+  url: /about/
+cardsTitle: Nuestros servicios
 cards:
 - title: Card 1 Title
   img: /img/placeholder1.jpg
@@ -32,4 +35,4 @@ cards:
     text: Button 3 text
     url: "#"
 ---
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis quod autem ullam illum dicta perferendis, quaerat dolore sunt, soluta incidunt, repellat aspernatur maxime. Dignissimos quibusdam voluptas, ipsam iusto, quo maxime earum officiis optio consequatur fugit voluptatem nobis error sed natus, voluptatum eveniet expedita aliquam id reiciendis molestiae necessitatibus accusantium impedit?
+Ofrecemos servicios veterinarios generales en la comodidad de tu hogar, sólo contactanos abajo y agenda tu hora

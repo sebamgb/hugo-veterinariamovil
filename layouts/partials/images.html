@@ -1,0 +1,18 @@
+{{- $src := resources.Get .src -}}
+{{- with .page -}}
+{{- $page := . -}}
+{{- $src = $page.Resources.GetMatch .src -}}
+{{- end -}}
+{{- $width := .width -}}
+{{- $height := .height -}}
+{{- if ne $src.MediaType.SubType "svg" -}}
+{{- $img := $src.Fill (printf "%dx%d" $width $height) -}}
+{{- with $img -}}
+<img src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" class="img-fluid" width="{{ .Width }}"
+    height="{{ .Height }}" alt="{{ $.alt }}">
+{{- end -}}
+{{- else -}}
+{{- with $src -}}
+<img src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" class="img-fluid card-img-top" alt="{{ $.alt }}">
+{{- end -}}
+{{- end -}}

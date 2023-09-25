@@ -1,9 +1,13 @@
 [build]
-  publish = "public"
-  command = "hugo --debug --minify --cleanDestinationDir --baseURL $DEPLOY_PRIME_URL"
+    publish = "public"
+    command = "hugo --debug --minify --cleanDestinationDir --baseURL $DEPLOY_PRIME_URL"
 
-  [build.environment]
+[build.environment]
     HUGO_VERSION = "0.118.2"
+    NODE_ENV = "production"
+    # NODE_VERSION =
+    # NPM_VERSION =
+    # NPM_FLAGS =
 
 # Production context: all deploys from the Production branch
 # set in your site’s Branches settings in the UI will inherit

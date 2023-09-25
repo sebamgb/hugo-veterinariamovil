@@ -1,0 +1,6 @@
+{{- range resources.Match "css/**/*.scss" -}}
+{{- partial "libsass" . -}}
+{{- end -}}
+{{- range resources.Match "css/*.scss" -}}
+{{- partial "libsass" . -}}
+{{- end -}}

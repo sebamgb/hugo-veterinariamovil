@@ -1,1 +1,6 @@
-
+{{- range resources.Match "js/**/*" -}}
+{{- partial "esbuild" . -}}
+{{- end -}}
+{{- range resources.Match "js/*.js" -}}
+{{- partial "esbuild" . -}}
+{{- end -}}

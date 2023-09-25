@@ -1,5 +1,5 @@
 ---
-title: "Contact"
+title: "Contacto"
 date: 2021-12-17T13:31:12+11:00
 draft: false
 menu: main
@@ -53,4 +53,4 @@ form:
     required: true
     invalidFeedback: Please enter message.
 ---
-You can contact us on the details below, or simply fill in the contact form to the right.
+Puedes contactarnos con los detalles de abajo o llenando el formulario del lado de estos
