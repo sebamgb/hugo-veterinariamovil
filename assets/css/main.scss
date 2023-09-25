@@ -4,17 +4,28 @@
 
 :root {
     --btn-paypal-color: #ffc439;
-    --btn-paypal-border-color: #d9a630
+    --btn-paypal-border-color: #d9a630;
+    --bs-purple-rgb: 111, 66, 193;
+    --bs-pink-rgb: 214, 51, 132;
+    --bs-accent-rgb: 255, 228, 132;
 }
 
 body {
+    .bi {
+        width: inherit;
+        height: inherit;
+    }
+
     header {
         box-shadow: var(--bs-box-shadow);
 
         .navbar {
+            padding: 0;
+
             .navbar-toggler {
                 border: none;
-                color: var(--bs-border-color-translucent)
+                color: var(--bs-border-color-translucent);
+                padding: 1px;
             }
 
             .fc {
@@ -22,17 +33,21 @@ body {
                 width: 1em;
                 height: 1em;
             }
-            .brand{
+
+            .brand {
                 background-color: var(--bs-body-bg);
-                background-image: url("/img/placeholder1.jpg");
+                background-image: linear-gradient(180deg, rgba(var(--bs-body-bg-rgb), 0.01), rgba(var(--bs-body-bg-rgb), 1) 85%), radial-gradient(ellipse at top left, rgba(var(--bs-primary-rgb), 0.5), transparent 50%), radial-gradient(ellipse at top right, rgba(var(--bs-accent-rgb), 0.5), transparent 50%), radial-gradient(ellipse at center right, rgba(var(--bs-purple-rgb), 0.5), transparent 50%), radial-gradient(ellipse at center left, rgba(var(--bs-pink-rgb), 0.5), transparent 50%);
                 background-size: cover;
-                background-attachment:scroll;
-                background-blend-mode: difference;
+                background-repeat: no-repeat;
             }
         }
     }
 
     main {
+        video {
+            width: inherit;
+        }
+
         .not-found {
             h1 {
                 font-size: 5rem;
