@@ -1,4 +1,4 @@
-baseURL: http://localhost/
+baseURL: https://clinicaveterinariamovil.netlify.com/
 # for xml output
 languageCode: "es-CL"
 # for website
