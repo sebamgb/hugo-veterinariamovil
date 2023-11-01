@@ -22,7 +22,7 @@ minify:
     js:
       keepVarNames: false
       precision: 0
-      version: 2022
+      version: 2023
     json:
       keepNumbers: false
       precision: 0

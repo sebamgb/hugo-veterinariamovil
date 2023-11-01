@@ -1,13 +1,20 @@
-baseURL: https://clinicaveterinariamovil.netlify.com/
+baseURL: https://clinicaveterinariamovil.cl/
 # for xml output
 languageCode: "es-CL"
 # for website
 defaultContentLanguage: "es"
+# sub dir content
+defaultContentLanguageInSubDir: false
+# content for website
+contentDir: "content"
+# website title
 title: Clínica Veterinaria Móvil
 # alternate copyright company text
 copyright: by Sebastián Romero
 # controls number of pages displayed on list pages
-paginate: 6
+paginate: 10
+# controls the element using during pagination
+paginatePath: pagina
 # controls the summary length on list pages
 summaryLength: 7
 # this is required so that Hugo will render markdown to HTML
@@ -18,3 +25,11 @@ markup:
 # taxonomy set up (tags have been disabled)
 taxonomies:
   category: categories
+# path to lower?
+disablePathToLower: false
+# features disable
+disableKinds: [taxonomy, term]
+# shortcodes
+enableInlineShortcodes: true
+# path accents
+removePathAccents: true

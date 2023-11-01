@@ -65,8 +65,12 @@ contact:
   telephone:
     # first record appears in schema data
     - name: Phone
-      text: (09) 0000 0000
-      url: "tel:+56900000000"
+      text:
+        - (09) 4407 5388 
+        - (09) 7544 0757
+      url:
+        - "tel:+56944075388"
+        - "tel:+56975440757"
       icon: icons/phone.svg
       # icon: bi bi-phone
       disable: false
@@ -92,11 +96,13 @@ contact:
       disable: true
 social:
   whatsapp:
-    title: "+56900000000"
+    number:
+      - +56 9 4407 5388
+      - +56 9 7544 0757
     disable: false
-    url: https://api.whatsapp.com/send?phone=56900000000&l=es
+    url: https://api.whatsapp.com/send?l=es&type=phone_number&phone=
     icon: icons/whatsapp.svg
 # founder:
 # foundingDate:
 # foundingLocation:
-logo: img/LOGO.png
+logo: images/LOGO.png
