@@ -91,8 +91,7 @@
         </div>
       </div>
       <div class="row pb-3">
-        {{- range (.Paginate ( first 3 .Site.RegularPages.ByPublishDate.Reverse)).Pages -}}
-        {{- if eq "Servicios" .Type -}}
+        {{- range where .Site.RegularPages "Section" "Servicios" | first 3 | collections.Reverse -}}
         {{- with .Params -}}
         <div class="col-md-4 hero__figure">
           <div class="card mb-3" data-animation="show">
@@ -123,7 +122,6 @@
             </div>
           </div>
         </div>
-        {{- end -}}
         {{- end -}}
         {{- end -}}
         <div class="col">
