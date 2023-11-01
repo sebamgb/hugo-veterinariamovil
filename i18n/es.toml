@@ -4,3 +4,9 @@ other = "Menú"
 other = "Inicio"
 [toggle-theme]
 other = "Cambiar tema"
+[cookie-button]
+other = "Listo"
+[cookie]
+other = "Utilizamos cookies en este sitio web para brindarte la mejor experiencia en nuestra página y mostrarte anuncios relevantes. Para obtener más información, lee nuestra política."
+[cookie-link_1]
+other = "politicas de privacidad"
