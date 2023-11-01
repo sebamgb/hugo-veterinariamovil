@@ -1,0 +1,251 @@
+# Buscadores 
+
+User-agent: Googlebot 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: Googlebot-image 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+
+User-agent: Googlebot-video 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+
+User-agent: Googlenot-news 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+
+User-agent: Mediapartners-Google 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: AdsBot-Google 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: AdsBot-Google-Mobile 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: AdsBot-Google-Mobile-Apps 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: Storebot-Google 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: Bingbot 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+     
+User-agent: Applebot 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+   
+
+# Redes Sociales
+
+User-agent: FacebookExternalHit 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: Twitterbot 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: LinkedInBot 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+ 
+User-agent: Pinterestbot 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+
+
+# Marketing Robots
+
+User-agent: ia_archiver 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+
+User-agent: rogerbot 
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+
+User-agent: DotBot  
+Allow: /$
+Allow: /servicios/*
+Allow: /blog/*
+Allow: /nosotros/*
+Allow: /contacto/*
+Allow: /galeria/*
+Disallow: /politicas/*
+Disallow: /alertas/*
+Allow: /robots.txt
+Allow: /sitemap.xml
+Disallow: /
+
+
+# Resto de agentes sólo el home
+User-agent: *
+Crawl-delay:120
+Allow: /$
+Disallow: /
+
+# Sitemap
+Sitemap: https://chiletramite.com/sitemap.xml
