@@ -27,13 +27,13 @@ contact:
     # first record is for schema
     - name: Address
       streetAddress:
-        - 48 Pirrama Rd
-      addressLocality: Pyrmont
-      addressRegion: NSW
-      postalCode: 2009
-      addressCountry: Australia
+        - J E Lira 43
+      addressLocality: Caupolican
+      addressRegion: Viña del mar
+      postalCode: 2550713
+      addressCountry: Chile
       # hasMap
-      url: https://goo.gl/maps/2bHxJ3bfhtHtnx2b9
+      url: https://maps.app.goo.gl/8wFmcLv494RtmwtA8
       geo: #coordinates
       icon: icons/geo-alt.svg
       # icon: "#geo-alt"
