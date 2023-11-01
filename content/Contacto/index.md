@@ -6,7 +6,7 @@ menu: main
 weight: 100
 type: contact
 # google map url
-gmapURL: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3314.789243479668!2d151.0872133152887!3d-33.817751523842766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQ5JzAzLjkiUyAxNTHCsDA1JzIxLjkiRQ!5e0!3m2!1sen!2sau!4v1612097056169!5m2!1sen!2sau"
+gmapURL: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.110857688175!2d-71.51391522543005!3d-33.00085267357085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689dc3993a5414d%3A0x5938125246605ee!2sJuan%20Enrique%20Lira%2043%2C%20Vi%C3%B1a%20del%20Mar%2C%20Valpara%C3%ADso!5e0!3m2!1ses-419!2scl!4v1698874358608!5m2!1ses-419!2scl"
 robots: index, follow
 # contact form
 form:
