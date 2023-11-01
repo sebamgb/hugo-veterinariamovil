@@ -2,101 +2,90 @@
 {{ if eq .col "col"}}
 {{- /* remove margin and padding for nested rows */ -}}
 <div class="row m-0 p-0">
-{{ end }}
-<div class="mb-3{{ with .col }} {{ . }}{{end}}">
-  {{ with .label}}
-  <label for="{{- $.id -}}" class="form-label">{{ . }}{{ if $.required }}<span class="text-danger"> *</span>{{ end }}</label>
   {{ end }}
-  {{- if eq .type "textarea" -}}
-  {{ print "<textarea" | safeHTML }}
-  {{- else -}}
-  {{ print "<input" | safeHTML }}
-  {{ end }} 
-  id="{{- .id -}}" 
-  class="form-control {{ .class }}"
-  name="{{- .name -}}" 
-  {{ if and .placeholder (not .value) }}
-  placeholder="{{- .placeholder -}}" 
-  {{ end }}
-  {{ if eq .readonly true }}
-  readonly aria-label="{{ printf "Readonly input for %s" (.label | default .placeholder) }}" aria-readonly="true"
-  {{ else if .label }}
-  aria-labelledby="{{ .label }}"
-  {{ else if .placeholder}}
-  aria-label="{{- .placeholder -}}"
-  {{ end }}
-  {{ if .description }}
-  aria-describedby="{{ printf "%s-help" $.id }}"
-  {{ else if .invalidFeedback }}
-  aria-describedby="{{ printf "%s-invalid" .id }}"
-  {{ end }}
-  {{ with .minlength -}} minlength="{{- . -}}"{{- end -}}
-  {{ with .value }} value="{{ . }}"{{ end }}
-  {{ if .required }} required{{ end }}
-  {{ if .autofocus }} autofocus{{ end }}
-  {{ if eq .type "textarea" }}
-    rows="{{- .rows -}}"></textarea>
-  {{ else }}
-    type="{{- .type -}}">
-  {{ end }}
-  {{ with .description -}}
-  <div id="{{ printf "%s-help" $.id }}" class="form-text">{{- . -}}</div>
-  {{- end -}}
-  {{ with .invalidFeedback }}
-  <div class="invalid-feedback" id="{{ printf "%s-invalid" $.id }}">
-    {{- . -}}
+  <div class="mb-3{{ with .col }} {{ . }}{{end}}">
+    {{ with .label}}
+    <label for="{{- $.id -}}" class="form-label">{{ . }}{{ if $.required }}<span class="text-danger"> *</span>{{ end
+      }}</label>
+    {{ end }}
+    {{- if eq .type "textarea" -}}
+    {{ print "<textarea" | safeHTML }} {{- else -}} {{ print "<input" | safeHTML }} {{ end }} id="{{- .id -}}"
+      class="form-control {{ .class }}" name="{{- .name -}}" {{ if and .placeholder (not .value) }}
+      placeholder="{{- .placeholder -}}" {{ end }} {{ if eq .readonly true }} readonly aria-label="{{ printf " Readonly input for %s" (.label | default .placeholder) }}" aria-readonly="true" {{ else if .label }}
+      aria-labelledby="{{ .label }}" {{ else if .placeholder}} aria-label="{{- .placeholder -}}" {{ end }} {{ if
+      .description }} aria-describedby="{{ printf " %s-help" $.id }}" {{ else if .invalidFeedback }}
+      aria-describedby="{{ printf " %s-invalid" .id }}" {{ end }} {{ with .minlength -}} minlength="{{- . -}}" {{- end
+      -}} {{ with .value }} value="{{ . }}" {{ end }} {{ if .required }} required{{ end }} {{ if .autofocus }}
+      autofocus{{ end }} {{ if eq .type "textarea" }} rows="{{- .rows -}}"></textarea>
+      {{ else }}
+      type="{{- .type -}}">
+      {{ end }}
+      {{ with .description -}}
+      <div id="{{ printf " %s-help" $.id }}" class="form-text">{{- . -}}</div>
+      {{- end -}}
+      {{ with .invalidFeedback }}
+      <div class="invalid-feedback" id="{{ printf " %s-invalid" $.id }}">
+        {{- . -}}
+      </div>
+      {{ end }}
   </div>
-  {{ end }}
-</div>
-{{ if eq .col "col"}}
+  {{ if eq .col "col"}}
 </div>
 {{ end }}
 
 {{ end }}
 
-<form id="{{ .id }}" 
-  class="contact-form needs-validation" 
-  novalidate 
-  enctype="multipart/form-data"
-  >
+<form id="{{ .id }}" class="contact-form needs-validation" accept-charset="UTF-8" novalidate
+ enctype="multipart/form-data">
   <div class="container m-0 p-0">
     <div class="row pt-0">
       {{ range .inputs }}
-        {{ template "field" . }}
+      {{ template "field" . }}
       {{ end }}
     </div>
   </div>
-  <button class="btn btn-outline-primary btn-lrg mt-3" id='js-submit'>Send</button>
+  <div class="g-recaptcha" data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy" data-callback="submitForm"
+    data-size="invisible">
+  </div>
+  <input type="hidden" name="_gotcha">
+  <div class="d-grid mb-4">
+    <button id="{{ .submitId }}" class="d-flex align-items-center justify-content-center btn btn-outline-primary btn-lrg mt-3" disabled><span>{{- .submitText -}}</span></button>
+    {{/*  <button class="g-recaptcha btn btn-outline-success btn-lrg mt-3"
+      data-sitekey="6Lew3SMUAAAAAJ82QoS7gqOTkRI_dhYrFy1f7Sqy" id='js-submit' data-callback='submitForm' disabled>{{-
+      .submitText -}}</button>  */}}
+  </div>
+  <div class="text-center">
+    <noscript class="alert alert-danger">Debes habilitar javascript para enviar el formulario</noscript>
+  </div>
 </form>
 
 
-{{/*  
+{{/*
 
-  example code to call template
+example code to call template
 
-    <div class="row">
-    <div class="col">
-      {{ with .params.form.title }}
-      <h3>{{ . }}</h3>
-      {{ end }} 
-      {{ partial "content/contact-form" .params.form }}
-    </div>
+<div class="row">
+  <div class="col">
+    {{ with .params.form.title }}
+    <h3>{{ . }}</h3>
+    {{ end }}
+    {{ partial "content/contact-form" .params.form }}
   </div>
+</div>
 
-  
-  
-  description:
-  https://getbootstrap.com/docs/5.0/forms/overview/#form-text
-  disabled:
-  https://getbootstrap.com/docs/5.0/forms/overview/#disabled-forms
 
-  readonly: true
-  https://getbootstrap.com/docs/5.0/forms/form-control/#readonly
 
-  class could include
-  https://getbootstrap.com/docs/5.0/forms/form-control/#sizing
+description:
+https://getbootstrap.com/docs/5.0/forms/overview/#form-text
+disabled:
+https://getbootstrap.com/docs/5.0/forms/overview/#disabled-forms
 
-  form-control-plaintext (remove form-control)
-  
-  */}}
+readonly: true
+https://getbootstrap.com/docs/5.0/forms/form-control/#readonly
 
+class could include
+https://getbootstrap.com/docs/5.0/forms/form-control/#sizing
+
+form-control-plaintext (remove form-control)
+
+*/}}

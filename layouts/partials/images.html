@@ -1,18 +1,52 @@
-{{- $src := resources.Get .src -}}
-{{- with .page -}}
-{{- $page := . -}}
+{{- $img := "" -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+{{- $src := "" -}}
+{{- $page := "" -}}
+{{- $fill := "" -}}
+{{- if reflect.IsMap . -}}
+{{- with .Fill -}}
+{{- $fill = . -}}
+{{- end -}}
+{{- with .src -}}
+{{- $src = resources.Get . -}}
+{{- end -}}
+{{- if and .page .src -}}
+{{- $page = .page -}}
 {{- $src = $page.Resources.GetMatch .src -}}
 {{- end -}}
-{{- $width := .width -}}
-{{- $height := .height -}}
+{{- end -}}
 {{- if ne $src.MediaType.SubType "svg" -}}
-{{- $img := $src.Fill (printf "%dx%d" $width $height) -}}
+{{- with .height -}}
+{{- $height = . -}}
+{{- end -}}
+{{- with .width -}}
+{{- $width = . -}}
+{{- end -}}
+{{- if or $width $height -}}
+{{- if and .width .height -}}
+{{- if $fill -}}
+{{- $img = $src.Fill (printf "%dx%d" $width $height) -}}
+{{- else -}}
+{{- $img = $src.Fit (printf "%dx%d" $width $height) -}}
+{{- end -}}
+{{- else if .width -}}
+{{- $img = $src.Resize (printf "%dx" $width) -}}
+{{- else if .height -}}
+{{- $img = $src.Resize (printf "x%d" $height) -}}
+{{- end -}}
 {{- with $img -}}
-<img src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" class="img-fluid" width="{{ .Width }}"
-    height="{{ .Height }}" alt="{{ $.alt }}">
+<img src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" class="{{ $.class }}"
+    width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.alt }}">
 {{- end -}}
 {{- else -}}
 {{- with $src -}}
-<img src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" class="img-fluid card-img-top" alt="{{ $.alt }}">
+<img src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" class="{{ $.class }}"
+    width="{{ .Width }}" height="{{ .Height }}" alt="{{ $.alt }}">
+{{- end -}}
+{{- end -}}
+{{- else -}}
+{{- with $src -}}
+<img src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" class="{{ $.class }}" alt="{{ $.alt }}">
 {{- end -}}
 {{- end -}}

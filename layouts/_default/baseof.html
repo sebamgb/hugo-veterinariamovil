@@ -2,21 +2,21 @@
 <html class="no-js" dir="ltr" data-bs-theme="auto">
 
 <head>
-  {{ partial "head" . }}
+  {{- partial "head" . -}}
 </head>
 
 <body>
-  {{- .Render "svg" -}}
   <header>
-    {{ partial "header" . }}
+    {{- partial "header" . -}}
   </header>
   <main>
-    {{ block "main" . }}{{ end }}
+    {{- block "main" . -}}{{- end -}}
   </main>
   <footer>
-    {{ partial "footer" . }}
+    {{- partial "footer" . -}}
   </footer>
-  {{ partial "scriptFooter" . }}
+  {{- block "cookie" . -}}{{- end -}}
+  {{- partial "scriptFooter" . -}}
 </body>
 
 </html>

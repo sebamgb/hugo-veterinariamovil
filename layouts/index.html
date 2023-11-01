@@ -1,64 +1,143 @@
 {{ define "main" }}
-<div class="my-5">
-  <div class="hero">
+<div class="my-4">
+  <section class="hero pb-5">
     <div class="container col-xxl-8">
-      <div class="row align-items-center justify-content-center py-5 g-5">
-        <div class="col-10 col-sm-8 col-lg-6 text-center">
-          <video height="260" controls autoplay>
-            {{ with resources.Get "videos/presentation_by.mp4" }}
-            <source src="data:{{- .MediaType.Type -}};base64,{{- .Content | base64Encode -}}" type="video/mp4">
-            {{ end }}
-            El navegador no soporta la etiqueta video
-          </video>
-        </div>
-        <div class="col-lg-6 order-lg-first text-center">
-          <div class="h1">{{ .Params.heading }}</div>
-          <p class="lead">{{ .Content }}</p>
-          <div class="d-grid gap-2 d-flex justify-content-center">
-            {{ with .Params.btn1 }}
-            {{ if and .text .url }}
-            <a role="button"
-              href="{{ .url -}}{{- with .whatsapp -}}{{ printf `?l=es&phone=%d&text=%s&type=phone_number` .number (replace .text ` ` `+`) | safeHTML }}{{- end -}}"
-              target="_blank" class="btn btn-lg btn-success px-4 me-md-2">{{ .text }}</a>
-            {{ end }}
-            {{ end }}
-            {{ with .Params.btn2 }}
-            {{ if and .text .url }}
-            <a role="button" href="{{ .url }}" target="_blank" class="btn btn-lg btn-outline-secondary px-4">{{ .text
-              }}</a>
-            {{ end }}
-            {{ end }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          <div class="h2 fs-1 pb-3">{{ .Params.cardsTitle }}</div>
-        </div>
-      </div>
-      <div class="row pb-3">
-        {{ range .Params.cards }}
-        <div class="col-md-4">
-          <div class="card mb-3">
-            <img src="{{ .img }}" class="card-img-top img-fluid" alt="{{ .title }}">
-            <div class="card-body">
-              <div class="h5 card-title">{{ .title }}</div>
-              <p class="card-text">{{ .text }}</p>
-              {{ with .btn }}
-              {{ if and .url .text }}
-              <a href="{{ .url }}" class="btn btn-outline-info">{{ .text }}</a>
-              {{ end }}
-              {{ end }}
+      <div class="row align-items-start justify-content-center g-5">
+        <div class="col-10 col-sm-8 col-lg-6 hero__figure">
+          <div id="{{ replace .Params.carouselId `#` `` }}" class="carousel slide" data-animation="fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              {{- $slideN := 1 -}}
+              {{- $slidesTo := 0 -}}
+              {{- $attrs := dict -}}
+              {{- $page := . -}}
+              {{- range resources.Match "images/slides/**" -}}
+              {{- $attrs = merge $attrs (dict "type" "button" "data-bs-slide-to" (printf "%d" $slidesTo) "data-bs-target" $page.Params.carouselId
+              "aria-label" (printf "Slide %d" $slideN)) -}}
+              {{- if in .Title "active" -}}
+              {{- $attrs = merge $attrs (dict "class" "active" "aria-current" true) -}}
+              {{- end -}}
+              <button {{- range $k, $v :=$attrs -}} {{- with $v -}} {{- printf ` %s=%q` $k $v | safeHTMLAttr -}} {{- end
+                -}} {{- end -}}></button>
+              {{- $slidesTo = add $slidesTo 1 -}}
+              {{- $slideN = add $slideN 1 -}}
+              {{- end -}}
+            </div>
+            <div class="carousel-inner">
+              {{- $class := "" -}}
+              {{- range resources.Match "images/slides/**" -}}
+              {{- if in .Title "active" -}}
+              {{- $class = " active" -}}
+              {{- else -}}
+              {{- $class = "" -}}
+              {{- end -}}
+              <div class="carousel-item{{- $class -}}">
+                {{- partial "images" (dict "src" .Name "alt" "slide img" "class" "img-fluid") -}}
+              </div>
+              {{- end -}}
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-control-prev" type="button" data-bs-target="#slides" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#slides" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
           </div>
         </div>
-        {{ end }}
+        <div class="col-lg-6 order-first py-5 text-center">
+          <div class="h1">{{- .Params.heading -}}</div>
+          <p class="lead">{{- .Content -}}</p>
+          <div class="d-grid gap-2 d-flex justify-content-center">
+            {{- with .Params.btn1 -}}
+            {{- $number := "" -}}
+            {{- $text := "" -}}
+            {{- with .whatsapp -}}
+            {{- $number = .number -}}
+            {{- $text = .text -}}
+            {{- end -}}
+            {{- if and .text .url -}}
+            <a role="button" href="{{ printf `%sphone=%d&text=%s` .url $number $text | safeHTML }}" target="_blank"
+              class="btn btn-lg btn-success px-4 me-md-2">{{- .text -}}</a>
+            {{- end -}}
+            {{- end -}}
+            {{- with .Params.btn2 -}}
+            {{- if and .text .url -}}
+            <a role="button" href="{{ .url }}" class="btn btn-lg btn-outline-secondary px-4">{{- .text
+              -}}</a>
+            {{- end -}}
+            {{- end -}}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+  <section class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero">
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col text-center" id="services">
+          <div class="h2 fs-1 pb-3">{{- .Params.cardsTitle -}}</div>
+        </div>
+      </div>
+      <div class="row pb-3">
+        {{- range (.Paginate ( first 3 .Site.RegularPages.ByPublishDate.Reverse)).Pages -}}
+        {{- if eq "Servicios" .Type -}}
+        {{- with .Params -}}
+        <div class="col-md-4 hero__figure">
+          <div class="card mb-3" data-animation="show">
+            {{- $title := .title -}}
+            {{- with .img -}}
+            {{- partial "images" (dict "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid") -}}
+            {{- end -}}
+            <div class="card-header">
+              <div class="h5 text-center card-title">{{- .title -}}</div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{- .text -}}</p>
+            </div>
+            <div class="d-grid">
+              {{- with .btn -}}
+              {{- if and .url .title -}}
+              {{- $number := "" -}}
+              {{- $text := "" -}}
+              {{- with .whatsapp -}}
+              {{- $number = .number -}}
+              {{- $text = .text -}}
+              {{- end -}}
+              <a href="{{ printf `%sphone=%d&text=%s` .url $number $text | safeHTML }}"
+                class="btn btn-outline-info rounded-top-0">{{-
+                .title -}}</a>
+              {{- end -}}
+              {{- end -}}
+            </div>
+          </div>
+        </div>
+        {{- end -}}
+        {{- end -}}
+        {{- end -}}
+        <div class="col">
+          <a href="/servicios/"
+            class="px-5 icon-link icon-link-hover btn btn-sm btn-outline-success text-decoration-none">
+            {{- partial "blocks/svg-font" (dict "src" "icons/arrow-right.svg" "iconLink" true
+            "right" (.Params.cardsMore) "em" 2) -}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-{{ end }}
+{{- end -}}
+{{- define "cookie" -}}
+{{- partial "cookie" . -}}
+{{- end -}}

@@ -1,49 +1,69 @@
 <div class="contact-details m-3">
-{{ range $key, $value := .Site.Params.contact }}
-  {{ range $value }}
-    {{ $text := .text }}
-    {{ if eq $key "openinghours" }}
-      {{ $text = "<table><tbody>" }}
-      {{ range .hours }}
-        {{ if .custom }}
-          {{ $text = printf "%s <tr><td>%s:  </td><td>%s</td></tr>" $text .day .custom | safeHTML }}
-        {{ else }}
-          {{ $text = printf "%s <tr><td>%s:  </td><td>%s - %s</td></tr>" $text .day (.open | time.Format ":time_short") (.close | time.Format ":time_short")  | safeHTML }}
-        {{ end }}
-      {{ end }}
-      {{ $text = print $text "</tbody></table>"}}
-    {{ end }}
-    {{ if eq $key "address" }}
-      {{ $text = "" }}
-      {{ range .streetAddress }}
-        {{ $text = print $text . "<br>"}} 
-      {{ end }}
-      {{ with .addressLocality }}
-        {{ $text = print $text . "<br>" }}
-      {{ end }}
-      {{ with .addressRegion }}
-        {{ $text = print $text . ", " }}
-      {{ end }}
-      {{ with .postalCode }}
-        {{ $text = print $text . }}
-      {{ end }}
-    {{ end }}
-    {{ if not .disable }}
+{{- range $key, $value := .Site.Params.contact -}}
+  {{- range $value -}}
+    {{- $text := .text -}}
+    {{- if eq $key "openinghours" -}}
+      {{- $text = "<table><tbody>" -}}
+      {{- range .hours -}}
+        {{- if .custom -}}
+          {{- $text = printf "%s <tr><td>%s:  </td><td>%s</td></tr>" $text .day .custom | safeHTML -}}
+        {{- else -}}
+          {{- $text = printf "%s <tr><td>%s:  </td><td>%s - %s</td></tr>" $text .day (.open | time.Format ":time_short") (.close | time.Format ":time_short")  | safeHTML -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $text = print $text "</tbody></table>" -}}
+    {{- end -}}
+    {{- if eq $key "address" -}}
+      {{- $text = "" -}}
+      {{- range .streetAddress -}}
+        {{- $text = print $text . "<br>" -}} 
+      {{- end -}}
+      {{- with .addressLocality -}}
+        {{- $text = print $text . "<br>" -}}
+      {{- end -}}
+      {{- with .addressRegion -}}
+        {{- $text = print $text . ", " -}}
+      {{- end -}}
+      {{- with .postalCode -}}
+        {{- $text = print $text . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if not .disable -}}
       <div class="d-flex flex-row align-middle">
         <div class="d-flex align-items-center">
           <div class="fs-0 text-primary me-2 my-2">
             {{- partial "blocks/svg-font" (dict "src" .icon "em" 1) -}}
           </div>
         </div>
+        {{- $ctx := . -}}
+        {{- if reflect.IsSlice $text -}}
+        {{- $url:= .url -}}
+        {{- range $k, $v := $text -}}
+        <div class="d-flex align-items-center">
+          {{- if gt $k 0 -}}
+          <span class="px-1">
+            {{- "-" -}}
+          </span>
+          {{- end -}}
+          {{- range $kk, $vv := $url -}}
+          {{- if eq $k $kk -}}
+          <a class="text-break text-decoration-none" href="{{- $vv | safeURL -}}" 
+          {{- if ne $key "telephone" -}} target="_blank" rel="noopener"{{- end -}}>
+          {{- $v | markdownify -}}{{- if $ctx.url -}}</a>{{- end -}}
+          {{- end -}}
+          {{- end -}}
+        </div>
+        {{- end -}}
+        {{- else -}}
         <div class=" d-flex align-items-center">
-          {{ $ctx := . }}
           {{- with .url -}}
           <a class="text-break text-decoration-none" href="{{- . | safeURL -}}" 
           {{- if ne $key "telephone" -}} target="_blank" rel="noopener"{{- end -}}>{{- end -}}
           {{- $text | markdownify -}}{{- if .url -}}</a>{{- end -}}
         </div>
-      </div>
-    {{ end }}
-  {{ end }}
-{{ end }}
+        {{- end -}}
+      </div >
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 </div>

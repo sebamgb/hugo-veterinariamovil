@@ -1,8 +1,13 @@
-<div class="container-fluid mt-3">
-  <div class="row">
-    <div class="col bg-black text-white p-3">
-      Copyright &copy; <span id="js-year"><noscript>{{- now.Format "2006" -}}</noscript></span> {{- with .Site.Copyright
-      -}}{{- . -}}{{- else -}}{{- .Site.Title -}}{{- end -}}
+<div class="container-fluid pt-3 border-top">
+  <div class="container">
+    <div class="row">
+      <div class="col p-3 text-center">
+        Copyright &copy;<span id="currentYear" class="mx-2"><noscript>{{- now.Format "2006" -}}</noscript></span>
+        <div>
+          {{- with .Site.Copyright
+          -}}{{- . -}}{{- else -}}{{- .Site.Title -}}{{- end -}}
+        </div>
+      </div>
     </div>
   </div>
 </div>

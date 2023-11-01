@@ -4,10 +4,9 @@
             <p>
                 {{- i18n "cookie" -}}
             <div class="col d-flex align-content-center justify-content-around">
-                <a class="link-success" target="_blank" rel="nofollow" href="{{ relLangURL `politicas/privacy/` }}">{{-
+                <a class="link-info" target="_blank" rel="nofollow" href="{{ relLangURL `politicas/privacy/` }}">{{-
                     i18n
-                    "cookie-link_1" -}}</a><a class="link-danger" target="_blank" rel="nofollow"
-                    href="{{  relLangURL `politicas/cookies/` }}">{{- i18n "cookie-link_2" -}}</a>
+                    "cookie-link_1" -}}</a>
             </div>
             </p>
             <div class="d-flex align-content-center justify-content-center">
@@ -16,6 +15,5 @@
                 </button>
             </div>
         </div>
-        <script src="{{.Site.BaseURL | relLangURL}}js/cookie.js"></script>
     </div>
 </div>

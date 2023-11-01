@@ -1,8 +1,9 @@
 {{/* compatibility */}}
-<meta name="generator" content="Hugo 0.116.1">
+<meta name="generator" content="Hugo 0.118.2">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.1,
+user-scalable=yes, interactive-widget=overlays-content">
 {{- /* end */ -}}
 {{/* keywords and descriptions at home and regular page */}}
 <meta name="keywords" content="{{- with .Keywords -}} {{- delimit . `, ` -}} 
@@ -23,35 +24,24 @@
 </title>
 {{- /* end */ -}}
 {{/* favicon */}}
-{{- range resources.Match "images/favicon*" -}}
-{{- if in .Title ".ico" -}}
-{{- printf `
-<link rel="shortcut icon" type="%s" sizes="any" href="data:%s;base64,%s" />`
-.MediaType.Type .MediaType.Type (.Content | base64Encode) | safeHTML -}}
-{{- else if eq .MediaType.SubType "svg" -}}
-{{- printf `
-<link rel="icon" type="%s" href="data:%s;base64,%s" />`
-.MediaType.Type .MediaType.Type (.Content | base64Encode) | safeHTML -}}
-{{- else if in .Title "apple" -}}
-{{- printf `
-<link rel="apple-touch-icon" type="%s" sizes="%dx%d" href="data:%s;base64,%s" />`
-.MediaType.Type .Width .Height .MediaType.Type (.Content | base64Encode) | safeHTML -}}
-{{- else -}}
-{{- printf `
-<link rel="icon" type="%s" sizes="%dx%d" href="data:%s;base64,%s" />`
-.MediaType.Type .Width .Height .MediaType.Type (.Content | base64Encode) | safeHTML -}}
-{{- end -}}
-{{- end -}}
-{{- with resources.Get "json/site.webmanifest" -}}
-{{- printf `
-<link rel="manifest" type="%s" href="data:%s;base64,%s" />`
-.MediaType.Type .MediaType.Type (.Content | base64Encode) | safeHTML -}}
-{{- end -}}
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 {{- /* end */ -}}
-{{/* create a dynamic year and insert into the js-year span */}}
-<script>
-    document.getElementById('js-year').innerHTML = new Date().getFullYear();
-</script>
 {{/* styles css */}}
 {{- partial "styles" . }}
 {{- /* end */ -}}
@@ -70,7 +60,7 @@
 {{/* alternate ouput formats e.g. rss feed */}}
 {{- range .AlternativeOutputFormats -}}
 {{- printf `
-<link rel="%s" type="%s" href="%s" title="%s"/>`
+<link rel="%s" type="%s" href="%s" title="%s" />`
 .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML -}}
 {{- end -}}
 {{- template "_internal/twitter_cards.html" . -}}

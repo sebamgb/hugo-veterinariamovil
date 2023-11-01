@@ -10,12 +10,16 @@
                 <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
                     id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
                     aria-label="Toggle theme (auto)">
-                    <svg class="fc my-1 theme-icon-active">
-                        <use href="#circle-half"></use>
-                    </svg>
+                    <div class="d-flex align-items-center my-1 theme-icon-active">
+                        {{- range site.Params.theme -}}
+                        {{- if .active -}}
+                        {{- partial "blocks/svg-font" (dict "src" .src "em" 1) -}}
+                        {{- end -}}
+                        {{- end -}}
+                    </div>
                     <span class="ms-3" id="bd-theme-text">{{- i18n "toggle-theme" -}}</span>
                 </button>
-                {{- partial "inline/navbar-item/menu/dropdown-ul.html" (dict "page" $page) -}}
+                {{- partial "inline/navbar-item/menu/dropdown-ul.html" (dict "page" $page "em" 1) -}}
             </div>
             {{- partial "inline/navbar-item/menu/menu-toggler.html" (dict "wrapperClass" "order-first" "buttonClass"
             "navbar-toggler rounded-circle" "text" (i18n "toggler")) -}}
@@ -53,15 +57,16 @@
 {{- end -}}
 {{- define "partials/inline/navbar-item/menu/dropdown-ul.html" -}}
 {{- $page := .page -}}
+{{- $em := .em -}}
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
     {{- range $page.Site.Params.theme -}}
     <li>
         <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="{{ .name }}"
             aria-pressed="{{- with .active -}}true{{- else -}}false{{- end -}}">
-            {{- with .id -}}
-            <svg class="fc me-2 theme-icon opacity-50">
-                <use href="#{{- . -}}"></use>
-            </svg>
+            {{- with .src -}}
+            <div class="me-2 theme-icon opacity-50">
+                {{- partial "blocks/svg-font.html" (dict "src" . "em" $em) -}}
+            </div>
             {{- end -}}
             <span>
                 {{- .title -}}
@@ -76,14 +81,14 @@
 <div class="justify-self-center">
     <a title="{{ i18n `home` }}" href="{{- relLangURL `` -}}">
         {{- with $page.Site.Params.logo -}}
-        {{- partial "images" (dict "src" . "alt" "clinica veterinaria movil" "width" 120 "height" 150) -}}
+        {{- partial "images" (dict "src" . "alt" "clinica veterinaria movil" "width" 100 "height" 110) -}}
         {{- else -}}
         <h1 class="h1">{{- $page.Site.Title -}}</h1>
         {{- end -}}
     </a>
 </div>
 <div class="justify-self-center">
-    <span>{{ site.Params.slogan }}</span>
+    <h3 class="m-0" style="font-size: small;">{{- site.Params.slogan -}}</h3>
 </div>
 {{- end -}}
 {{- define "partials/inline/menu/walk.html" -}}

@@ -1,4 +1,7 @@
-{{- range resources.Match "css/**/*.scss" -}}
+{{- range resources.Match "css/vendor/**" -}}
+{{- partial "libsass" . -}}
+{{- end -}}
+{{- range resources.Match (printf "css/%s/**" ( .Title | lower )) -}}
 {{- partial "libsass" . -}}
 {{- end -}}
 {{- range resources.Match "css/*.scss" -}}

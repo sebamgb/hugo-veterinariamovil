@@ -1,25 +1,40 @@
-{{- $fc := "" -}}
 {{- $em := "" -}}
+{{- $left := "" -}}
+{{- $right := "" -}}
 {{- $src := "" -}}
 {{- $suf := "" -}}
 {{- if reflect.IsMap . -}}
-{{- with .fontClass -}}
-{{- $fc = . -}}
-{{ end }}
-{{- if and .em .src -}}
-{{- $em = .em -}}
+{{- if .iconLink -}}
+{{- with .left -}}
+{{- $left = . -}}
+{{- end -}}
+{{- with .right -}}
+{{- $right = . -}}
+{{- end -}}
+{{- end -}}
+{{- with .em -}}
+{{- $em = . -}}
 {{- $suf = "em" -}}
-{{- $src = .src -}}
+{{- end -}}
+{{- with .src -}}
+{{- $src = . -}}
 {{- end -}}
 {{- end -}}
 {{- $em = printf `%v%s` $em $suf -}}
 {{- with resources.Get $src -}}
-{{- $name := replace .Name "/" "_" -}}
-{{- $name = replace $name "." "-" -}}
-{{- $attrs := dict "class" (printf "%s %s" $fc $name) -}}
-{{- printf "<%s>:root{--%v:%s;}.%s{height:var(--%s);width:var(--%s);}</%s>" "style" $name $em $name $name $name "style" | safeHTML -}}
-<span {{- range $k, $v :=$attrs -}} {{- with $v -}} {{- printf ` %s=%q` $k $v | safeHTMLAttr -}} {{- end -}} {{- end
-    -}}>
-    {{- .Content | safeHTML -}}
-</span>
+{{- $name := split .Name "/" -}}
+{{- range $key, $value := $name -}}
+{{- if eq $key (sub ($name | len) 1) -}}
+{{- $name = split $value "." -}}
+{{- range $k, $v := $name -}}
+{{- if eq $k 0 -}}
+{{- printf "<%s>:root{--%s:%s;}.%s{height:var(--%s);width:var(--%s);}</%s>" "style" $v $em (printf "bi-%s" $v) $v $v "style"
+| safeHTML -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- $right -}}
+{{- .Content | safeHTML -}}
+{{- $left -}}
 {{- end -}}

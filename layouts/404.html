@@ -1,0 +1,16 @@
+{{- define "main" -}}
+<div class="container-fluid pb-5">
+    <article class="not-found row align-items-center">
+        <div class="text-center col-md-3">
+            <h1 class="text-body-emphasis m-3">404</h1>
+            <div>
+                <h2 class="pb-2 text-danger-emphasis">Te perdiste?</h2>
+                <a class="btn btn-lg btn-danger text-danger-emphasis" href="{{ relURL `` }}">Ir al Inicio</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            {{ partial "images" (dict "src" "images/404.png" "height" 400 "class" "img-fluid" ) -}}
+        </div>
+    </article>
+</div>
+{{- end -}}

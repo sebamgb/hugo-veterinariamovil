@@ -1,7 +1,16 @@
 <div class="container-fluid bg-success">
-    <div class="container d-flex justify-content-end">
-        {{- partial "blocks/menu-social" (dict "class" "me-2 text-white" "classTitle" "text-white text-decoration-none"
-        "fontClass" "fs-0" "em" .8) -}}
+    <div class="container">
+        <div class="d-flex justify-content-end ">
+            <div class="row">
+                <div class="col text-white">
+                    <div class="d-flex align-items-center">
+                        {{- partial "blocks/menu-social" (dict "classWrapperIcon"
+                        "icon-link icon-link-hover mx-2 fs-sm text-decoration-none icon-link-left text-white"
+                        "em" .8) -}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {{- partial "nav" (dict "menuID" "main" "page" .) -}}

@@ -1,0 +1,57 @@
+{{- define "main" -}}
+<section class="hero pb-3 my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {{- partial "title" . -}}
+        <div class="py-3">{{- .Content | safeHTML -}}</div>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      {{- range .Paginator.Pages -}}
+      {{- with .Params -}}
+        <div class="col-md-4 hero__figure">
+          <div class="card mb-3" data-animation="show">
+            {{- $title := .title -}}
+            {{- with .img -}}
+            {{- partial "images" (dict "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid") -}}
+            {{- end -}}
+            <div class="card-header">
+              <div class="h5 text-center card-title">{{- .title -}}</div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{- .text -}}</p>
+            </div>
+            <div class="d-grid">
+              {{- with .btn -}}
+              {{- if and .url .title -}}
+              {{- $number := "" -}}
+              {{- $text := "" -}}
+              {{- with .whatsapp -}}
+              {{- $number = .number -}}
+              {{- $text = .text -}}
+              {{- end -}}
+              <a href="{{ printf `%sphone=%d&text=%s` .url $number $text | safeHTML }}"
+                class="btn btn-outline-info rounded-top-0">{{-
+                .title -}}</a>
+              {{- end -}}
+              {{- end -}}
+            </div>
+          </div>
+        </div>
+        {{- end -}}
+      {{- end -}}
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="m-3 d-flex justify-content-center">
+          {{- template "_internal/pagination.html" . -}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end -}}
+{{- define "cookie" -}}
+  {{- partial "cookie" . -}}
+{{- end -}}

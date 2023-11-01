@@ -1,35 +1,31 @@
+{{- $number := "" -}}
 {{- $em := "" -}}
 {{- $fontClass := "" -}}
 {{- $class := "" -}}
-{{- $classtitle := "" -}}
 {{- if reflect.IsMap . -}}
-  {{- $em = .em -}}
-  {{- $fontClass = .fontClass -}}
-  {{- with .class -}}
-    {{- if reflect.IsSlice . -}}
-      {{- $class = . -}}
-      {{- $class = delimit $class " " -}}
-    {{- else -}}
-      {{- $class = . -}}
-    {{- end -}}
-  {{- end -}}
-  {{- with .classTitle -}}
-    {{- if reflect.IsSlice . -}}
-      {{- $classtitle = . -}}
-      {{- $classtitle = delimit $classtitle " " -}}
-    {{- else -}}
-      {{- $classtitle = . -}}
-    {{- end -}}
-  {{- end -}}
+{{- $em = .em -}}
+{{- $fontClass = .fontClass -}}
+{{- with .classWrapperIcon -}}
+{{- if reflect.IsSlice . -}}
+{{- $class = . -}}
+{{- $class = delimit $class " " -}}
+{{- else -}}
+{{- $class = . -}}
+{{- end -}}
+{{- end -}}
 {{- end -}}
 {{- range $key, $value := site.Params.social -}}
-{{- $title := $value.title | default (humanize $key) -}}
+{{- $title := $value.number | default (humanize $key) -}}
 {{- if and (ne $value.disable true) $value.icon -}}
-<div class="{{- $class }} d-inline-block">
-{{- partial "blocks/svg-font.html" (dict "src" $value.icon "em" $em "fontClass" $fontClass) -}}
-</div>
-<a role="button" class="{{ $classtitle }}" href="{{- $value.url -}}" target="_blank" rel="noopener">
-  {{- $title -}}
+{{- range $k, $v := $title -}}
+{{- with $value.number -}}
+{{- $number = replace $v "+" "" -}}
+{{- $number = replace $number " " "" -}}{{- end -}}
+{{- if gt $k 0 -}}<span class="px-1">-</span>{{- end -}}
+<a role="button" href="{{- $value.url -}}{{- if $value.number -}}{{- $number -}}{{- end -}}" title="{{- $v -}}"
+  class="{{ $class }}" target="_blank" rel="noopener">
+  {{- partial "blocks/svg-font" (dict "src" $value.icon "iconLink" true "em" $em "left" $v) -}}
 </a>
+{{- end -}}
 {{- end -}}
 {{- end -}}

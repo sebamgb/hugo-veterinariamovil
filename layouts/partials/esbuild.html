@@ -1,3 +1,21 @@
+{{- $src := "" -}}
+{{- $page := "" -}}
+{{- if reflect.IsMap . -}}
+{{ with .page }}
+{{- $page = . -}}
+{{ end }}
+{{ with .src }}
+{{- $src = . -}}
+{{ end }}
+{{- with $built := $page.Resources.Get $src -}}
+{{- $opts := dict "minify" true "target" "es2015" -}}
+{{- if eq hugo.Environment "development" -}}
+{{- $opts = dict "sourceMap" "inline" "target" "es2015" -}}
+{{- end -}}
+{{- $built = $built | js.Build $opts | fingerprint }}
+<script src="{{ $built.RelPermalink }}" integrity="{{ $built.Data.Integrity | safeHTML }}"></script>
+{{- end }}
+{{- else -}}
 {{- with $built := resources.Get . -}}
 {{- $opts := dict "minify" true "target" "es2015" -}}
 {{- if eq hugo.Environment "development" -}}
@@ -6,3 +24,4 @@
 {{- $built = $built | js.Build $opts | fingerprint }}
 <script src="{{ $built.RelPermalink }}" integrity="{{ $built.Data.Integrity | safeHTML }}"></script>
 {{- end }}
+{{- end -}}
