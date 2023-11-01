@@ -1,19 +1,47 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-:root {
-    --btn-paypal-color: #ffc439;
-    --btn-paypal-border-color: #d9a630;
-    --bs-purple-rgb: 111, 66, 193;
-    --bs-pink-rgb: 214, 51, 132;
-    --bs-accent-rgb: 255, 228, 132;
-}
+$transition-time: .8;
 
 body {
-    .bi {
-        width: inherit;
-        height: inherit;
+
+    [data-animation="fade"] {
+        visibility: hidden;
+        transform: translate(100%);
+        transition: #{$transition-time}s ease-in #{$transition-time/2}s;
+
+        --transform: translate(0);
+    }
+
+    [data-animation="show"] {
+        visibility: hidden;
+        transform: scale(0);
+        transition: #{$transition-time}s ease-in #{$transition-time/2}s;
+
+        --transform: scale(1);
+    }
+
+    [data-animation="up"] {
+        visibility: hidden;
+        transform: translateY(100%);
+        transition: #{$transition-time}s ease-in #{$transition-time/2}s;
+
+        --transform: translateY(0);
+    }
+
+    [data-animation] {
+        &.active {
+            visibility: visible;
+            transform: var(--transform);
+        }
+    }
+
+    .icon-link-left {
+        --bs-icon-link-transform: translate3d(0, -.125rem, 0);
+    }
+
+    .fs-sm {
+        font-size: small;
     }
 
     header {
@@ -28,12 +56,6 @@ body {
                 padding: 1px;
             }
 
-            .fc {
-                fill: currentColor;
-                width: 1em;
-                height: 1em;
-            }
-
             .brand {
                 background-color: var(--bs-body-bg);
                 background-image: linear-gradient(180deg, rgba(var(--bs-body-bg-rgb), 0.01), rgba(var(--bs-body-bg-rgb), 1) 85%), radial-gradient(ellipse at top left, rgba(var(--bs-primary-rgb), 0.5), transparent 50%), radial-gradient(ellipse at top right, rgba(var(--bs-accent-rgb), 0.5), transparent 50%), radial-gradient(ellipse at center right, rgba(var(--bs-purple-rgb), 0.5), transparent 50%), radial-gradient(ellipse at center left, rgba(var(--bs-pink-rgb), 0.5), transparent 50%);
@@ -44,6 +66,8 @@ body {
     }
 
     main {
+        overflow: hidden;
+
         video {
             width: inherit;
         }
@@ -117,5 +141,6 @@ body {
             border-top-style: dashed;
             border-top-color: inherit;
         }
+
     }
 }
