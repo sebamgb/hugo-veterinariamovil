@@ -4,35 +4,19 @@ date: 2021-11-16T23:04:08+11:00
 draft: false
 menu: main
 weight: 10
-heading: Clínica Veterinaria Móvil Viña del Mar
+heading: Clínica Veterinaria Móvil Quinta Región
+robots: index, follow
 btn1:
   text: Contáctanos
-  url: https://api.whatsapp.com/send
+  url: https://api.whatsapp.com/send?l=es&type=phone_number&
   whatsapp:
-    number: 56982599243
-    text: Hola, buen día tarde o noche, quisiera saber más de su negocio.
+    number: 56944075388
+    text: Hola, necesito información
 btn2:
-  text: Info
-  url: /about/
+  text: Servicios
+  url: "#services"
 cardsTitle: Nuestros servicios
-cards:
-- title: Card 1 Title
-  img: /img/placeholder1.jpg
-  text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto modi placeat corrupti tempora quod quidem praesentium impedit. Rem, sapiente eius?
-  btn:
-    text: Button 1 text
-    url: "#"
-- title: Card 2 Title
-  img: /img/placeholder2.jpg
-  text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto modi placeat corrupti tempora quod quidem praesentium impedit. Rem, sapiente eius?
-  btn:
-    text: Button 2 text
-    url: "#"
-- title: Card 3 Title
-  img: /img/placeholder3.jpg
-  text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto modi placeat corrupti tempora quod quidem praesentium impedit. Rem, sapiente eius?
-  btn:
-    text: Button 3 text
-    url: "#"
+cardsMore: Ver Más
+carouselId: "#slides"
 ---
-Ofrecemos servicios veterinarios generales en la comodidad de tu hogar, sólo contactanos abajo y agenda tu hora
+Ofrecemos servicios veterinarios generales, vamos a Peñablanca hasta Playa Ancha, Curauma, Placilla, Laguna Verde y Concón, sólo contactanos abajo y agenda tu hora.

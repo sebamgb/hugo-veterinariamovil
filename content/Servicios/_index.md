@@ -1,8 +1,9 @@
 ---
 title: "Servicios"
-date: 2021-11-23T21:40:16+11:00
+date: 2023-10-11T18:13:45-03:00
 draft: false
 menu: main
-weight: 30
+weight: 80
+type: servicios
 ---
-Disponemos de los siguientes servicios:
+
