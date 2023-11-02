@@ -12,7 +12,7 @@
       {{- range $images -}}
       <div class="col-md-4 hero__figure">
         <div class="mb-3" data-animation="show">
-          {{- partial "images" (dict "Fill" true "src" .Name "width" 400 "alt" .Title "class" "rounded img-fluid") -}}
+          {{- partial "images" (dict "src" .Name "alt" .Title "class" "rounded img-fluid") -}}
         </div>
       </div>
       {{- end -}}
