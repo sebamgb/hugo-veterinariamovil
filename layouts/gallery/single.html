@@ -1,0 +1,25 @@
+{{- define "main" -}}
+<section class="main">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col">
+        {{- partial "title" . -}}
+        <div class="py-3">{{- .Content | markdownify -}}</div>
+      </div>
+    </div>
+    <div class="row" data-masonry='{"percentPosition": true }'>
+      {{- $images := resources.Match "images/galeria/*" -}}
+      {{- range $images -}}
+      <div class="col-md-4 hero__figure">
+        <div class="mb-3" data-animation="show">
+          {{- partial "images" (dict "Fill" true "src" .Name "width" 400 "alt" .Title "class" "rounded img-fluid") -}}
+        </div>
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+{{- end -}}
+{{- define "cookie" -}}
+{{- partial "cookie" . -}}
+{{- end -}}
