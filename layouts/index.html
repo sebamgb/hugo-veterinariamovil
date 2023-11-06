@@ -1,17 +1,19 @@
 {{ define "main" }}
-<div class="my-4">
+<div class="my-5">
   <section class="hero pb-5">
     <div class="container col-xxl-8">
       <div class="row align-items-start justify-content-center g-5">
         <div class="col-10 col-sm-8 col-lg-6 hero__figure">
-          <div id="{{ replace .Params.carouselId `#` `` }}" class="carousel slide" data-animation="fade" data-bs-ride="carousel">
+          <div id="{{ replace .Params.carouselId `#` `` }}" class="carousel slide" data-animation="fade"
+            data-bs-ride="carousel">
             <div class="carousel-indicators">
               {{- $slideN := 1 -}}
               {{- $slidesTo := 0 -}}
               {{- $attrs := dict -}}
               {{- $page := . -}}
               {{- range resources.Match "images/slides/**" -}}
-              {{- $attrs = merge $attrs (dict "type" "button" "data-bs-slide-to" (printf "%d" $slidesTo) "data-bs-target" $page.Params.carouselId
+              {{- $attrs = merge $attrs (dict "type" "button" "data-bs-slide-to" (printf "%d" $slidesTo)
+              "data-bs-target" $page.Params.carouselId
               "aria-label" (printf "Slide %d" $slideN)) -}}
               {{- if in .Title "active" -}}
               {{- $attrs = merge $attrs (dict "class" "active" "aria-current" true) -}}
@@ -74,12 +76,42 @@
       </div>
     </div>
   </section>
-  <section class="hero">
+  <section class="hero pb-5">
     <div class="container">
+      <div class="row mb-3">
+        <div class="col text-center" id="services">
+          <div class="h2 fs-1 pb-3">Galería</div>
+        </div>
+      </div>
       <div class="row">
         <div class="col">
-
+          {{- $imageWidth := "" -}}
+          {{- $imageHeight := "" -}}
+          {{- range resources.Match "images/galeria/*" | first 8 -}}
+          {{- if gt .Width .Height -}}
+          {{- $imageWidth = .Height -}}
+          {{- $imageHeight = .Height -}}
+          {{- else -}}
+          {{- $imageWidth = .Width -}}
+          {{- $imageHeight = .Width -}}
+          {{- end -}}
+          <div class="col-6 col-md-4 col-xl-3 pb-3 pe-2 d-inline-block hero__figure">
+            <div data-animation="up">
+              <a href="/galeria/">
+                {{- partial "images" (dict "class" "img-fluid rounded" "Fill" true "src" .Name "width" $imageWidth "height"
+                $imageHeight) -}}
+              </a>
+            </div>
+          </div>
+          {{- end -}}
         </div>
+      </div>
+      <div class="col">
+        <a href="/galeria/"
+          class="px-5 icon-link icon-link-hover btn btn-sm btn-outline-success text-decoration-none">
+          {{- partial "blocks/svg-font" (dict "src" "icons/arrow-right.svg" "iconLink" true
+          "right" (.Params.cardsMore) "em" 2) -}}
+        </a>
       </div>
     </div>
   </section>
@@ -97,7 +129,8 @@
           <div class="card mb-3" data-animation="show">
             {{- $title := .title -}}
             {{- with .img -}}
-            {{- partial "images" (dict "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid") -}}
+            {{- partial "images" (dict "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid")
+            -}}
             {{- end -}}
             <div class="card-header">
               <div class="h5 text-center card-title">{{- .title -}}</div>
