@@ -22,7 +22,7 @@
               {{- $slideN = add $slideN 1 -}}
               {{- end -}}
             </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner rounded">
               {{- $class := "" -}}
               {{- range resources.Match "images/slides/**" -}}
               {{- if in .Title "active" -}}
