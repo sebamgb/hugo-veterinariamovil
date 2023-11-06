@@ -1,6 +1,6 @@
 [build]
     publish = "public"
-    command = "hugo --debug --minify --cleanDestinationDir --baseURL $DEPLOY_PRIME_URL"
+    command = "hugo --gc --logLevel debug --minify --cleanDestinationDir --baseURL $DEPLOY_PRIME_URL"
 
 [build.environment]
     HUGO_VERSION = "0.118.2"
