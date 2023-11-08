@@ -76,15 +76,18 @@ user-scalable=yes, interactive-widget=overlays-content">
 <meta name="robots" content="{{- . -}}">
 {{- end -}}
 {{- /* end */ -}}
-{{/* sharethis integration */}}
-{{- with .Site.Params.sharethis -}}
-<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property={{- . -}}&product=sop'
-    async='async'></script>
-{{- end -}}
-{{/* end */}}
+{{/*  google analytics  */}}
+{{- template "_internal/google_analytics.html" . -}}
+{{/*  end  */}}
 {{- /* googleadsense */ -}}
 {{- with .Site.Params.google_ad_client -}}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{- . -}}"
     crossorigin="anonymous"></script>
 {{- end -}}
-{{- /* end */}}
+{{- /* end */ -}}
+{{- /* sharethis integration */ -}}
+{{- with .Site.Params.sharethis -}}
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property={{- . -}}&product=sop'
+    async='async'></script>
+{{- end -}}
+{{- /* end */ -}}
