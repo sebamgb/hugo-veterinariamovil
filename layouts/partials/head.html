@@ -76,6 +76,8 @@ user-scalable=yes, interactive-widget=overlays-content">
 <meta name="robots" content="{{- . -}}">
 {{- end -}}
 {{- /* end */ -}}
+{{- /*  google tag manager  */ -}}
+{{- with site.Params.googleTagManager -}}
 <!-- Google Tag Manager -->
 <script>(function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
@@ -84,8 +86,10 @@ user-scalable=yes, interactive-widget=overlays-content">
         }); var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5Z9L8C8M');</script>
+    })(window, document, 'script', 'dataLayer', '{{- . -}}');</script>
 <!-- End Google Tag Manager -->
+{{- end -}}
+{{- /*  end  */ -}}
 {{- /* googleadsense */ -}}
 {{- with .Site.Params.google_ad_client -}}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{- . -}}"
