@@ -86,9 +86,6 @@ user-scalable=yes, interactive-widget=overlays-content">
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-5Z9L8C8M');</script>
 <!-- End Google Tag Manager -->
-{{/* google analytics */}}
-{{- template "_internal/google_analytics.html" . -}}
-{{/* end */}}
 {{- /* googleadsense */ -}}
 {{- with .Site.Params.google_ad_client -}}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{- . -}}"
