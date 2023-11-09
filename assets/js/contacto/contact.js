@@ -52,7 +52,6 @@ Array.from(forms).forEach(async form => {
     // Loop over inputs and validating
     Array.from(inputs).forEach(async input => (
         input.addEventListener("keydown", async e => {
-            console.log(e.target.value)
             if (!e.target.checkValidity()) {
                 // if form is not valid when press key
                 form.classList.add('was-validated')
