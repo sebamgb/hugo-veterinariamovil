@@ -79,7 +79,7 @@
   <section class="hero pb-5">
     <div class="container">
       <div class="row mb-3">
-        <div class="col text-center" id="services">
+        <div class="col text-center" id="galery">
           <div class="h2 fs-1 pb-3">Galería</div>
         </div>
       </div>
@@ -129,7 +129,7 @@
           <div class="card mb-3" data-animation="show">
             {{- $title := .title -}}
             {{- with .img -}}
-            {{- partial "images" (dict "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid")
+            {{- partial "images" (dict "Fill" true "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid")
             -}}
             {{- end -}}
             <div class="card-header">

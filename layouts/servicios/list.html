@@ -14,7 +14,7 @@
           <div class="card mb-3" data-animation="show">
             {{- $title := .title -}}
             {{- with .img -}}
-            {{- partial "images" (dict "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid") -}}
+            {{- partial "images" (dict "Fill" true "src" . "width" 400 "height" 300 "alt" $title "class" "card-img-top img-fluid") -}}
             {{- end -}}
             <div class="card-header">
               <div class="h5 text-center card-title">{{- .title -}}</div>
