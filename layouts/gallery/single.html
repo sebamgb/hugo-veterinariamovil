@@ -9,9 +9,9 @@
     </div>
     <div class="row" data-masonry='{"percentPosition": true }'>
       {{- $images := resources.Match "images/galeria/*" -}}
-      {{- range $images -}}
+      {{- range $images | collections.Reverse -}}
       <div class="col-md-4 hero__figure">
-        <div class="mb-3" data-animation="show">
+        <div class="mb-3" data-animation="show" id="{{ replace .Title `/` `-` | lower }}">
           {{- partial "images" (dict "src" .Name "alt" .Title "class" "rounded img-fluid") -}}
         </div>
       </div>
