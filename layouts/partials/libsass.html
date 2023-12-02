@@ -5,7 +5,8 @@
 {{- if eq (hugo.Environment) "development" -}}
 {{- $opts = (dict "transpiler" "libsass" "enableSourceMap" true "includePaths" (slice "node_modules")) -}}
 {{- end -}}
-{{- $src = $src | toCSS $opts | postCSS | resources.Fingerprint }}
+{{- $src = $src | toCSS $opts -}}
+{{- $src = $src | resources.PostCSS | fingerprint }}
 <link rel="stylesheet" href="{{ $src.Permalink | relURL }}" integrity="{{ $src.Data.Integrity | safeHTML }}"
   crossorigin="anonymous">
 {{- end }}

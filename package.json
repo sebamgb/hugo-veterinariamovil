@@ -17,12 +17,14 @@
     "list": "exec-bin node_modules/.bin/hugo/hugo new ${page}/_index.md"
   },
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
     "autoprefixer": "^10.4.16",
     "bootstrap": "^5.3.2",
     "exec-bin": "^1.0.0",
     "hugo-installer": "^4.0.1",
     "masonry-layout": "^4.2.2",
     "netlify-cms": "^2.10.192",
+    "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0"
   },
   "otherDependencies": {
