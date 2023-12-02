@@ -6,9 +6,9 @@
       {{- $text = "<table><tbody>" -}}
       {{- range .hours -}}
         {{- if .custom -}}
-          {{- $text = printf "%s <tr><td>%s:  </td><td>%s</td></tr>" $text .day .custom | safeHTML -}}
+          {{- $text = printf "%s <tr><td>%s:  </td><td class='px-3'>%s</td></tr>" $text .day .custom | safeHTML -}}
         {{- else -}}
-          {{- $text = printf "%s <tr><td>%s:  </td><td>%s - %s</td></tr>" $text .day (.open | time.Format ":time_short") (.close | time.Format ":time_short")  | safeHTML -}}
+          {{- $text = printf "%s <tr><td>%s:  </td><td class='px-3'>%s - %s</td></tr>" $text .day (.open | time.Format ":time_short") (.close | time.Format ":time_short")  | safeHTML -}}
         {{- end -}}
       {{- end -}}
       {{- $text = print $text "</tbody></table>" -}}
