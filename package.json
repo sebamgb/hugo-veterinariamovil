@@ -23,12 +23,11 @@
     "exec-bin": "^1.0.0",
     "hugo-installer": "^4.0.1",
     "masonry-layout": "^4.2.2",
-    "netlify-cms": "^2.10.192",
-    "postcss": "^8.4.31",
-    "postcss-cli": "^10.1.0"
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0"
   },
   "otherDependencies": {
-    "hugo": "0.119.0"
+    "hugo": "0.121.0"
   },
   "repository": {
     "type": "git",
