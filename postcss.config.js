@@ -16,6 +16,9 @@ module.exports = {
         "alert-danger",
         "alert-success",
         "spinner-border",
+        "pagination-default", 
+        "page-item",
+        "page-link"
       ],
     },
     autoprefixer: {},
