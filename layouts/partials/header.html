@@ -14,3 +14,31 @@
     </div>
 </div>
 {{- partial "nav" (dict "menuID" "main" "page" .) -}}
+<footer>
+    <nav aria-label="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                {{- define "partials/inline/breadcrumb" -}}
+                {{- with .Parent -}}
+                {{- partial "inline/breadcrumb" . -}}
+                <li class="breadcrumb-item"><a href="{{.RelPermalink}}">
+                        {{- with .Params.breadcrumb -}}
+                        {{- . | humanize | title -}}
+                        {{- else -}}
+                        {{- .Title | humanize | title -}}
+                        {{- end -}}
+                    </a></li>
+                {{- end -}}
+                {{- end -}}
+                {{- partial "inline/breadcrumb" . -}}
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{- with .Params.breadcrumb -}}
+                    {{- . | humanize | title -}}
+                    {{- else -}}
+                    {{- .Title | humanize | title -}}
+                    {{- end -}}
+                </li>
+            </ol>
+        </div>
+    </nav>
+</footer>

@@ -24,7 +24,7 @@
               {{- $slideN = add $slideN 1 -}}
               {{- end -}}
             </div>
-            <div class="carousel-inner rounded">
+            <div class="carousel-inner rounded border">
               {{- $class := "" -}}
               {{- range resources.Match "images/slides/**" -}}
               {{- if in .Title "active" -}}
@@ -98,7 +98,7 @@
           <div class="col-6 col-md-4 col-xl-3 pb-3 pe-2 d-inline-block hero__figure">
             <div data-animation="up">
               <a href="/galeria/#{{- replace .Title `/` `-` | lower -}}">
-                {{- partial "images" (dict "class" "img-fluid rounded" "Fill" true "src" .Name "width" $imageWidth "height"
+                {{- partial "images" (dict "class" "img-fluid rounded border" "Fill" true "src" .Name "width" $imageWidth "height"
                 $imageHeight) -}}
               </a>
             </div>
@@ -123,7 +123,7 @@
         </div>
       </div>
       <div class="row pb-3">
-        {{- range where .Site.RegularPages "Section" "Servicios" | first 3 -}}
+        {{- range where .Site.RegularPages "Section" "servicios" | first 3 -}}
         {{- with .Params -}}
         <div class="col-md-4 hero__figure">
           <div class="card mb-3" data-animation="show">
