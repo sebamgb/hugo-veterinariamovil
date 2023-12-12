@@ -2,6 +2,7 @@
    Author's custom styles
    ========================================================================== */
 $transition-time: .8;
+@import "../scss/root";
 
 body {
 
@@ -45,9 +46,9 @@ body {
     }
 
     header {
-        box-shadow: var(--bs-box-shadow);
-
+        
         .navbar {
+            box-shadow: var(--bs-box-shadow);
             padding: 0;
 
             .navbar-toggler {
