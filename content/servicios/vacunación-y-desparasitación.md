@@ -1,5 +1,5 @@
 ---
-title: "Vacunación y Desparacitación"
+title: "Vacunación y Desparasitación"
 date: 2023-10-12T14:39:46-03:00
 draft: false
 img: images/servicios/vacunación_y_desparacitación.jpg
